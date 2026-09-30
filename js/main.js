@@ -154,5 +154,10 @@ initMidi({
   },
 });
 
+// Makes a reload always pick up the latest deployed version (see sw.js).
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').catch((err) => console.warn('Service worker not registered', err));
+}
+
 buildKeyboard();
 showSection(settings.section in controllers ? settings.section : 'drill');
