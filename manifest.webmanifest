@@ -1,0 +1,10 @@
+{
+  "name": "Чтение с листа",
+  "short_name": "Чтение с листа",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#f4efe4",
+  "theme_color": "#f4efe4",
+  "lang": "ru"
+}

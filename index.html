@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Чтение с листа">
+  <meta name="theme-color" content="#f4efe4">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>Чтение с листа</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.5/build/cjs/vexflow.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/opensheetmusicdisplay@2.1.3/build/opensheetmusicdisplay.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-section="drill">
+  <header class="bar">
+    <div class="controls">
+      <div class="segmented" role="group" aria-label="Раздел">
+        <button type="button" data-section-button="drill" aria-pressed="true">Упражнения</button>
+        <button type="button" data-section-button="piece" aria-pressed="false">Пьесы</button>
+      </div>
+
+      <label class="for-drill">Уровень
+        <select id="level"></select>
+      </label>
+      <label class="for-drill">Режим
+        <select id="mode">
+          <option value="single">По одной ноте</option>
+          <option value="line">Строка из 8 нот</option>
+        </select>
+      </label>
+
+      <label class="for-piece">Пьеса
+        <select id="piece"></select>
+      </label>
+      <div class="for-piece button-row">
+        <button type="button" id="open" class="plain-button">Открыть файл…</button>
+        <button type="button" id="delete-piece" class="plain-button" hidden>Удалить</button>
+        <input type="file" id="file" accept=".musicxml,.xml,.mxl" hidden>
+      </div>
+      <label class="for-piece">Руки
+        <select id="hands">
+          <option value="both">Обе</option>
+          <option value="right">Правая</option>
+          <option value="left">Левая</option>
+        </select>
+      </label>
+
+      <label>Подписи
+        <select id="labels">
+          <option value="none">Нет</option>
+          <option value="c">Только «до» (C)</option>
+          <option value="all">Все ноты</option>
+        </select>
+      </label>
+    </div>
+    <div class="status">
+      <div class="stats" id="stats" aria-live="polite"></div>
+      <button type="button" id="reset" class="link-button for-drill">Сбросить</button>
+      <div class="input-source" id="input-source">Экранная клавиатура</div>
+    </div>
+  </header>
+
+  <main class="staff-area">
+    <div class="staff-card">
+      <div id="staff" class="staff for-drill"></div>
+      <div id="score" class="score for-piece"></div>
+    </div>
+  </main>
+
+  <div class="toolbar">
+    <div class="nav for-piece">
+      <button type="button" id="back" class="tool-button" aria-keyshortcuts="ArrowLeft" title="К началу такта (←). Ещё раз — такт назад">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5v14"/><path d="M19 12H9"/><path d="M13 7l-5 5 5 5"/></svg>
+        К началу такта
+      </button>
+      <button type="button" id="restart" class="tool-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+        С начала
+      </button>
+    </div>
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+    <div class="qwerty-hint">Клавиатура Mac: Z…/ — нижняя октава, Q…P — верхняя</div>
+  </div>
+
+  <section id="keyboard" class="keyboard" aria-label="Клавиатура фортепиано"></section>
+</body>
+</html>
